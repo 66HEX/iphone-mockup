@@ -129,7 +129,7 @@ const Scene = () => {
     <>
       {isLoading && <MinimalistLoader />}
       <WebGPUCanvas 
-        camera={{ position: [0, 0.5, 3], fov: 45 }}
+        camera={{ position: [0, 0, 3], fov: 45 }}
         style={{ width: '100%', height: '100%' }}
         gl={{ antialias: true }}
         shadows

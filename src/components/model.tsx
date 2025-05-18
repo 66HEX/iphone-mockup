@@ -1,8 +1,10 @@
 import * as THREE from 'three'
 import { useGLTF, useTexture } from '@react-three/drei'
-import { GLTF } from 'three-stdlib'
+import { useLoader } from '@react-three/fiber'
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
 import { useEffect } from 'react'
-
+import { GLTF } from 'three-stdlib'
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -139,7 +141,13 @@ type GLTFResult = GLTF & {
 
 export default function Model(props: any) {
 
-  const { nodes, materials } = useGLTF('/apple_iphone_15_pro_max_black.glb') as unknown as GLTFResult
+  const gltf = useLoader(GLTFLoader, '/apple_iphone_15_pro_max_black_draco.glb', (loader) => {
+    const dracoLoader = new DRACOLoader()
+    dracoLoader.setDecoderPath('/draco/')
+    loader.setDRACOLoader(dracoLoader)
+  })
+
+  const { nodes, materials } = gltf as unknown as GLTFResult
 
   const imageTexture = useTexture('/mockup.png')
 

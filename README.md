@@ -1,4 +1,4 @@
-# Mobile Mockup
+# Iphone 15 Pro Max Mockup
 
 A minimalistic 3D iPhone 15 Pro Max model viewer built with React, Three.js, and WebGPU.
 
